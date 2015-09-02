@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Portfolio</title>
+  <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <script src="script.js"></script>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div id="cssmenu">
+    <ul>
+      <li><a href='#'>Welcome</a></li>
+      <li><a href='https://github.com/CharlesAngerstein/RubyPortfolioSite'>Portfolio</a></li>
+      <li><%= link_to 'Article', articles_path %>Blog</li>
+      <li><a href="#">About</a></li>
+      <li><a href='https://ca.linkedin.com/pub/charles-angerstein/a9/bb3/a76'>Contact</a></li>
+    </ul>
+    <div id="user_bar">
+        <% if logged_in? %>
+          <%= link_to "New Article", new_article_path %> |
+          <%= link_to "Edit Password", edit_user_path(current_user) %> |
+          <%= link_to "Logout", logout_path %>
+        <% else %>
+          <%= link_to "Login", login_path %>
+        <% end %>
+      </div>
+    </div>
+    <div id="main">
+      <%= content_tag(:p, notice, class: 'notice') if notice.present? %>
+      <%= content_tag(:p, alert, class: 'alert') if alert.present? %>
+      <%= yield %>
+    </div>
+    <div id="footer">
+      This blog was created by Charles Angerstein and is based on the work presented in
+  <a href="http://beginningrails.com">Beginning Rails 4</a>
+  </div>
+</body>
+</html>
