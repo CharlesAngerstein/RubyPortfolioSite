@@ -3,6 +3,9 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.9'
 
+# Timezone fix for Windows
+gem 'tzinfo-data'
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 
